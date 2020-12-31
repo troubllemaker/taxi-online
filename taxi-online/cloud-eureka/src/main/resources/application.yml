@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: cloud-eureka
+server:
+  port: 7900
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://${spring.cloud.client.ip-address}:${server.port}/eureka/
+  server:
+    enable-self-preservation: true
+    renewal-percent-thres-hold: 0.85
+    renewal-threshold-update-interval-ms: 900000
+    use-read-only-response-cache: true
+    response-cache-update-interval-ms: 30000
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
