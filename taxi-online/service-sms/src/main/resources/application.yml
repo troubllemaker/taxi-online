@@ -1,23 +1,28 @@
+server:
+  port: 8021
+
+
 spring:
   application:
-    name: cloud-zuul
-server:
-  port: 8001
+    name: service-sms
+
+
+
+
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7900/eureka/
+    registry-fetch-interval-seconds: 30
     enabled: true
-    fetch-registry: true
-    register-with-eureka: true
   instance:
+    lease-renewal-interval-in-seconds: 30
     hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-
-zuul:
-  prefix: /api
-  routes:
-    service-sms:
-      path: /sms/**
-      serviceId: service-sms
+    metadata-map:
+      version: v1

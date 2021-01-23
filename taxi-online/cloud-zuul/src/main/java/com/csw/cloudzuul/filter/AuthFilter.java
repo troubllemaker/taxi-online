@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  * @date 2020/12/31 16:34
  */
-@Component
+//@Component
 public class AuthFilter extends ZuulFilter {
 
     @Autowired
